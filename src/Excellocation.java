@@ -40,9 +40,11 @@ public class Excellocation {
 		            if(tmp > cols) cols = tmp;
 		        }
 		    }
-
+		    
+		    
+		    //read data from input excel file
 		    for(int r = 1; r < 10; r++) { //r < rows
-		        row = sheet.getRow(r);
+		        row = sheet.getRow(r); //sheet points to input source excel's sheet
 		        if(row != null) {
 		        	location lloc = new location();
 		            for(int c = 0;  c <= 4; c++) {
@@ -75,11 +77,16 @@ public class Excellocation {
 		                	}
 		                }
 		            }
+		            //compute location and store inside instant objects
 		            lloc.convertloc2addr();
+		            
+		            //then add the objects to the ArrayList of those objects
 		            AL_Loc.add(lloc);
 		           
 		        }
 		    }
+		    
+		    //output the arraylist to the FileOutputStream excel
 		    String file2 = "addrr.xls";
 	         FileOutputStream out = new FileOutputStream(file2);
 	         for (int i = 0; i < AL_Loc.size(); i++)
